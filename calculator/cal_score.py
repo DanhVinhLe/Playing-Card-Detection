@@ -20,7 +20,7 @@ class Calculator():
         num.sort()
         if (card_num[0] == card_num[1] and card_num[1] == card_num[2]):
             return self.result[2]
-        elif ((num[0] +1 == num[1] and num[1] +1 == num[2]) or (num[0] == 12 and num[1] == 13 and num[2] == 1)):
+        elif ((num[0] +1 == num[1] and num[1] +1 == num[2]) or (num[0] == 1 and num[1] == 12 and num[2] == 13)):
             return self.result[1]
         else:
             return (num[0] + num[1] + num[2]) % 10
