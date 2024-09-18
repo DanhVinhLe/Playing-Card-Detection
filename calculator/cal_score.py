@@ -3,7 +3,7 @@ import cv2
 
 class Calculator():
     def __init__(self):
-        self.result = {1: 'Lieng', 2: 'Sap'}
+        self.result = {1: 'Lieng', 2: 'Sap', 3: 'Anh'}
         self.card_id = {0: '10C', 1: '10D', 2: '10H', 3: '10S', 4: '2C', 5: '2D', 6: '2H',7: '2S',8: '3C',9: '3D',10: '3H',11: '3S',
                         12: '4C', 13: '4D', 14: '4H', 15: '4S', 16: '5C', 17: '5D', 18: '5H', 19: '5S', 20: '6C', 21: '6D', 22: '6H',
                         23: '6S', 24: '7C', 25: '7D', 26: '7H', 27: '7S', 28: '8C', 29: '8D', 30: '8H', 31: '8S', 32: '9C', 33: '9D',
@@ -22,6 +22,8 @@ class Calculator():
             return self.result[2]
         elif ((num[0] +1 == num[1] and num[1] +1 == num[2]) or (num[0] == 1 and num[1] == 12 and num[2] == 13)):
             return self.result[1]
+        elif (num[0] >= 11):
+            return self.result[3]
         else:
             return (num[0] + num[1] + num[2]) % 10
     
@@ -34,6 +36,6 @@ class Calculator():
             else:
                 cv2.putText(frame, f"Error: {len(list_class)} card detected", (w -180, h - 30), fontFace= cv2.FONT_HERSHEY_SIMPLEX, fontScale= 0.5, color= (0,0,0), thickness= 1)
         else:
-            cv2.putText(frame, f'{self.calculate_score(object_class)}',(w -150, h - 30), fontFace= cv2.FONT_HERSHEY_SIMPLEX, fontScale= 0.6, color= (0,0,0), thickness=1)
+            cv2.putText(frame, f'Result: {self.calculate_score(object_class)}',(w -170, h - 30), fontFace= cv2.FONT_HERSHEY_SIMPLEX, fontScale= 0.5, color= (0,0,0), thickness=1)
         
         return frame
