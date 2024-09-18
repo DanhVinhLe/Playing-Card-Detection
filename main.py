@@ -1,4 +1,3 @@
-import ultralytics
 from ultralytics import YOLO
 import cv2
 from calculator import Calculator
@@ -14,7 +13,7 @@ def main():
         h, w, _ = frame.shape
         object_class, _ = detector.detect(frame)
         frame = detector.draw_annotation(frame)
-        cv2.rectangle(frame, (w - 150, h - 75), (w,h), (255, 255, 255), cv2.FILLED)
+        cv2.rectangle(frame, (w - 200, h - 75), (w,h), (255, 255, 255), cv2.FILLED)
         frame = calculator.draw_result(frame, object_class)
         
         cv2.imshow('Card Detection', frame)
