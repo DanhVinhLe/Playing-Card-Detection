@@ -8,6 +8,11 @@ def main():
     detector = Detector('models/best.pt')
     calculator = Calculator()
     cap = cv2.VideoCapture(0)
+    '''
+    # Set width and height
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 960)
+    '''
     while True:
         ret, frame = cap.read()
         h, w, _ = frame.shape
