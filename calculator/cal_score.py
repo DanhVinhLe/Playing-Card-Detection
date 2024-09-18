@@ -29,8 +29,11 @@ class Calculator():
         h,w, _ = frame.shape
         list_class = list(set(object_class))
         if len(list_class) > 3 or len(list_class) < 3:
-            cv2.putText(frame, "Invalid", (w -100, h - 25), fontFace= cv2.FONT_HERSHEY_SIMPLEX, fontScale= 0.6, color= (0,0,0), thickness= 2)
+            if len(list_class) >=2: 
+                cv2.putText(frame, f"Error: {len(list_class)} cards detected", (w -190, h - 30), fontFace= cv2.FONT_HERSHEY_SIMPLEX, fontScale= 0.5, color= (0,0,0), thickness= 1)
+            else:
+                cv2.putText(frame, f"Error: {len(list_class)} card detected", (w -180, h - 30), fontFace= cv2.FONT_HERSHEY_SIMPLEX, fontScale= 0.5, color= (0,0,0), thickness= 1)
         else:
-            cv2.putText(frame, f'{self.calculate_score(object_class)}',(w -100, h - 25), fontFace= cv2.FONT_HERSHEY_SIMPLEX, fontScale= 0.6, color= (0,0,0), thickness=2)
+            cv2.putText(frame, f'{self.calculate_score(object_class)}',(w -150, h - 30), fontFace= cv2.FONT_HERSHEY_SIMPLEX, fontScale= 0.6, color= (0,0,0), thickness=1)
         
         return frame
